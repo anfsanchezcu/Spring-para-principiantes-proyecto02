@@ -22,14 +22,14 @@ public class PrimeraWebSpringApplication  implements CommandLineRunner {
 
 
 	public void run(String... args ) throws Exception{
-		personaService.createPerson(new Persona(4L,"Andres", 12));
-		personaService.createPerson(new Persona(2L,"Grabriel", 12));
-		personaService.createPerson(new Persona(3L,"Lukas", 12));
+		//personaService.createPerson(new Persona(4L,"Andres", 12));
+		//personaService.createPerson(new Persona(2L,"Grabriel", 12));
+		//personaService.createPerson(new Persona(3L,"Lukas", 12));
 
-		System.out.println("personas en tabla" + personaService.countPersons());
+		//System.out.println("personas en tabla" + personaService.countPersons());
 
-		List<Persona> personas = personaService.getAll();
-		personas.forEach(personaAux -> System.out.println(personaAux.getNombre()));
+		//List<Persona> personas = personaService.getAll();
+		//personas.forEach(personaAux -> System.out.println(personaAux.getNombre()));
 
 	}
 

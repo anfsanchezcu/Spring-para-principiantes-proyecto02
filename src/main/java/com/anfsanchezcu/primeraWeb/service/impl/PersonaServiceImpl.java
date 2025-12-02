@@ -5,6 +5,7 @@ import com.anfsanchezcu.primeraWeb.respository.PersonaRepository;
 import com.anfsanchezcu.primeraWeb.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,22 +33,24 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
+    @Transactional
     public Optional<Persona> updatePerson(Long id, Persona persona) {
         Optional<Persona> personaBBDD = personaRepository.findById(id);
 
-        if(personaBBDD.isEmpty())Optional.empty();
+        if (personaBBDD.isEmpty()) return Optional.empty();
 
         Persona personaAux = personaBBDD.get();
-        personaAux.setNombre(personaAux.getNombre());
-        personaAux.setEdad(personaAux.getEdad());
+        personaAux.setNombre(persona.getNombre());
+        personaAux.setEdad(persona.getEdad());
 
         return Optional.of(personaRepository.save(personaAux));
     }
 
     @Override
+    @Transactional
     public void deletePerson(Long id) {
         Optional<Persona> personaAux = personaRepository.findById(id);
-        if(!personaAux.isEmpty())
+        if (!personaAux.isEmpty())
             personaRepository.deleteById(id);
     }
 
